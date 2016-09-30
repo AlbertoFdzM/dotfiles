@@ -2,7 +2,7 @@
 	name = Alberto Fernandez
 	email = albertofdzm@gmail.com
 [push]
-	default = simple
+	default = current
 [core]
 	autocrlf = input
 	trustctime = false
