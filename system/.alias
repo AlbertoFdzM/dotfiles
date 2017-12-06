@@ -14,6 +14,7 @@ else # OS X `ls`
 fi
 
 alias ls="ls ${colorflag}"
+alias ll="ls -l ${colorflag}"
 
 # https://hub.github.com/
 [ $(type -P hub) ] && alias git=hub
@@ -25,4 +26,4 @@ alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $SHELL -l"
+alias dotfiles="exec $SHELL -l"
