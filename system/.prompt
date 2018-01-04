@@ -23,14 +23,14 @@ if tput setaf 1 &> /dev/null; then
     # sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 27)" # BOLD BLUE
     # sexy_bash_prompt_preposition_color="$sexy_bash_prompt_bold$(tput setaf 7)" # BOLD WHITE
     # sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 39)" # BOLD CYAN
-    # sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 76)" # BOLD GREEN
+    # sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 42)" # BOLD TEAL
     # sexy_bash_prompt_git_status_color="$sexy_bash_prompt_bold$(tput setaf 154)" # BOLD YELLOW
     # sexy_bash_prompt_git_progress_color="$sexy_bash_prompt_bold$(tput setaf 9)" # BOLD RED
-    sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 52)" # BOLD DARKRED
+    sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 9)" # BOLD LIGHTRED
     sexy_bash_prompt_preposition_color="$sexy_bash_prompt_bold$(tput setaf 7)" # BOLD WHITE
-    sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 118)" # BOLD LIGHTGREEN
+    sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 42)" # BOLD TEAL
     sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 178)" # BOLD YELLOW
-    sexy_bash_prompt_git_status_color="$sexy_bash_prompt_bold$(tput setaf 5)" # BOLD PURPLE
+    sexy_bash_prompt_git_status_color="$sexy_bash_prompt_bold$(tput setaf 27)" # BOLD BLUE
     sexy_bash_prompt_git_progress_color="$sexy_bash_prompt_bold$(tput setaf 39)" # BOLD CYAN
   else
   # Otherwise, use colors from our set of 8
@@ -42,9 +42,9 @@ if tput setaf 1 &> /dev/null; then
     # sexy_bash_prompt_git_progress_color="$sexy_bash_prompt_bold$(tput setaf 1)" # BOLD RED
     sexy_bash_prompt_user_color="$sexy_bash_prompt_bold$(tput setaf 1)" # BOLD RED
     sexy_bash_prompt_preposition_color="$sexy_bash_prompt_bold$(tput setaf 7)" # BOLD WHITE
-    sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 2)" # BOLD GREEN
+    sexy_bash_prompt_device_color="$sexy_bash_prompt_bold$(tput setaf 6)" # BOLD TEAL
     sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 3)" # BOLD YELLOW
-    sexy_bash_prompt_git_status_color="$sexy_bash_prompt_bold$(tput setaf 5)" # BOLD PURPLE
+    sexy_bash_prompt_git_status_color="$sexy_bash_prompt_bold$(tput setaf 4)" # BOLD BLUE
     sexy_bash_prompt_git_progress_color="$sexy_bash_prompt_bold$(tput setaf 6)" # BOLD CYAN
   fi
 
@@ -176,7 +176,8 @@ sexy_bash_prompt_branch_exists () {
 sexy_bash_prompt_parse_git_ahead () {
   # Grab the local and remote branch
   branch="$(sexy_bash_prompt_get_git_branch)"
-  remote_branch="origin/$branch"
+  remote="$(git config --get "branch.${branch}.remote" || echo -n "origin")"
+  remote_branch="$remote/$branch"
 
   # $ git log origin/master..master
   # commit 4a633f715caf26f6e9495198f89bba20f3402a32
@@ -197,7 +198,8 @@ sexy_bash_prompt_parse_git_ahead () {
 sexy_bash_prompt_parse_git_behind () {
   # Grab the branch
   branch="$(sexy_bash_prompt_get_git_branch)"
-  remote_branch="origin/$branch"
+  remote="$(git config --get "branch.${branch}.remote" || echo -n "origin")"
+  remote_branch="$remote/$branch"
 
   # $ git log master..origin/master
   # commit 4a633f715caf26f6e9495198f89bba20f3402a32
