@@ -12,7 +12,7 @@
 [help]
   autocorrect = 30
 [credential]
-	helper = osxkeychain
+	helper = cache
 [alias]
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
