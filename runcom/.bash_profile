@@ -52,3 +52,12 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
 export OS DOTFILES_DIR EXTRA_DIR
+
+export NVM_DIR="/Users/alberto.fernandez/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ -f /usr/local/etc/bash_completion ]; then
+. /usr/local/etc/bash_completion
+fi
+

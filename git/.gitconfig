@@ -1,18 +1,22 @@
 [user]
-	name = Alberto Fernandez
-	email = albertofdzm@gmail.com
+  name = Alberto Fernandez
+  email = Albertofdzm@gmail.com
 [push]
-	default = simple
+  default = current
 [core]
-	autocrlf = input
-	trustctime = false
-	editor = vim
-	filemode = false
+  autocrlf = input
+  trustctime = false
+  editor = vim
+  filemode = false
   excludesfile = ~/.gitignore_global
 [help]
   autocorrect = 30
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
+[diff]
+  tool = default-difftool
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -29,8 +33,7 @@
   unstage = reset HEAD --
   dc = diff --cached
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
-[branch]
-  autosetuprebase = always
+  set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [color]
   ui = true
 [merge]
@@ -46,3 +49,5 @@
   required = true
 [github]
   user = albertofdzm
+[url "https://github"]
+  insteadOf = git://github
